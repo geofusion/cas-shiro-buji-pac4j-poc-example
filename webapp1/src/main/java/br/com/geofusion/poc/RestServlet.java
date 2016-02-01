@@ -26,13 +26,13 @@ public class RestServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = "https://gfn-tix-8krp172.onmaps.com.br/webapp2/protected";
+		String url = "https://poc-server2.geofusion.com.br/webapp2/protected";
 
 		PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
 		CasProxyProfile profile = principals.byType(CasProxyProfile.class).iterator().next();
 
 		String ticket = profile
-				.getProxyTicketFor("https://gfn-tix-8krp172.onmaps.com.br/webapp2/callback");
+				.getProxyTicketFor("https://poc-server2.geofusion.com.br/webapp2/callback");
 		System.out.println("+++++++++++ " + "ticket = " + ticket);
 
 		URL obj = new URL(url + "&ticket=" + ticket);
